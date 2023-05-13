@@ -1,0 +1,33 @@
+type Mutation{
+	createUser(input:UserInput):UserResult
+}
+
+type Query{
+	findUserById(userId : String) : User
+	getAllUsers:[User]
+}
+
+type User{
+	email : String
+	name : String
+}
+
+input UserInput{
+	email: String
+	name: String
+}
+
+type UserCreateSuccessRes{
+	message: String
+	code: String
+}
+
+type UserCreateFailureRes{
+	message: String
+	errorCode: String
+}
+
+
+
+union UserResult = UserCreateSuccessRes | UserCreateFailureRes
+
